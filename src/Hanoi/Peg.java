@@ -1,5 +1,7 @@
 package Hanoi;
 
+import java.util.Arrays;
+
 public class Peg {
     private int pegNum;
     private int numDiscs;  // The total number of discs in the current game.
@@ -42,7 +44,9 @@ public class Peg {
     {
         // TODO remove the top disc from the peg.  Return its value.
         count--;
-        return discs[count] = 0;
+        int x = discs[count];
+        discs[count] = 0;
+        return x;
 
     }
     public boolean moveTopDisc(Peg newPeg)
