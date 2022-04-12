@@ -41,16 +41,17 @@ public class BoxFractal extends JPanel
             g.fillPolygon(x,y,4);
             return;
         }
-        int n = x[3]/3;
+        int n = (x[3]-x[0])/3;
+        int w = (y[1]-y[0])/3;
         int newX1 = x[0] + n;
         int newX2 = x[0] + n*2;
-        int newY1 = y[0] + n;
-        int newY2 = y[0] + 2*n;
+        int newY1 = y[0] + w;
+        int newY2 = y[0] + 2*w;
         drawAndSplit(g, new int[] {x[0],x[0], newX1, newX1}, new int[] {y[0], newY1, newY1, y[0]}, times - 1);
         drawAndSplit(g, new int[] {x[0],x[0], newX1, newX1}, new int[] {newY2,y[1],y[1],newY2}, times - 1);
-//        drawAndSplit(g, new int[] {newX1,newX1,newX2,newX2}, new int[] {newY1,newY1,newY2,newY2}, times-1 );
-//        drawAndSplit(g, new int[] {newX2,newX2,x[3],x[3]}, new int[] {newY2,y[3],y[3],newY2}, times - 1);
-//        drawAndSplit(g, new int[] {newX2,newX2,x[3],x[3]}, new int[] {y[0], newY1, newY1, y[0]}, times - 1);
+        drawAndSplit(g, new int[] {newX1,newX1,newX2,newX2}, new int[] {newY2,newY1,newY1,newY2}, times-1 );
+        drawAndSplit(g, new int[] {newX2,newX2,x[3],x[3]}, new int[] {newY2,y[2],y[2],newY2}, times - 1);
+        drawAndSplit(g, new int[] {newX2,newX2,x[3],x[3]}, new int[] {y[0], newY1, newY1, y[0]}, times - 1);
 
     }
     public static void main(String[] args)
@@ -58,7 +59,7 @@ public class BoxFractal extends JPanel
         JFrame window = new JFrame("Fractals");
         window.setBounds(200, 200, 500, 500);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        BoxFractal panel = new BoxFractal(2);
+        BoxFractal panel = new BoxFractal(5);
         panel.setBackground(Color.WHITE);
         Container c = window.getContentPane();
         c.add(panel);
