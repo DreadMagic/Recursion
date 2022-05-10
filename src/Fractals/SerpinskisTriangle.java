@@ -19,9 +19,10 @@ public class SerpinskisTriangle extends JPanel
 
 
         int [] xcoord = {xCenter - 128, xCenter+128, xCenter};
-        int [] ycoord = {yCenter+128, yCenter + 128, yCenter - 128};
+        int [] ycoord = {yCenter+128, yCenter + 128, yCenter - 100};
 
         g.setColor(Color.red);
+
         drawAndSplit(g, xcoord, ycoord, levels);
 
     }
@@ -42,11 +43,13 @@ public class SerpinskisTriangle extends JPanel
     {
         if (times == 1){
             g.setColor(Color.red);
-        g.fillPolygon(x,y,3);
-        return;}
+            g.fillPolygon(x,y,3);
+            return;
+        }
+
         int [] xmids = midpoints(x);
         int [] ymids = midpoints(y);
-        drawAndSplit(g,new int [] {xmids[0] + x[0], xmids[1] + x[0], xmids[3] + x[0]},ymids,times-1);
+        drawAndSplit(g, new int[] {x[0], xmids[0],xmids[0]},new int[] {ymids[0], y[0], ymids[2]},times-1);
 //        drawAndSplit(g,midpoints(x),midpoints(y),times-1);
 //        drawAndSplit(g,midpoints(x),midpoints(y),times-1);
 
@@ -56,7 +59,7 @@ public class SerpinskisTriangle extends JPanel
         JFrame window = new JFrame("Fractals");
         window.setBounds(200, 200, 500, 500);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Fractals.SerpinskisTriangle panel = new Fractals.SerpinskisTriangle(3);
+        Fractals.SerpinskisTriangle panel = new Fractals.SerpinskisTriangle(2);
         panel.setBackground(Color.WHITE);
         Container c = window.getContentPane();
         c.add(panel);
