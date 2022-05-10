@@ -57,7 +57,7 @@ public class BoxFractal extends JPanel
     public static void main(String[] args)
     {
         JFrame window = new JFrame("Fractals");
-        window.setBounds(200, 200, 500, 500);
+        window.setBounds(200, 200, 486, 486);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BoxFractal panel = new BoxFractal(5);
         panel.setBackground(Color.WHITE);
